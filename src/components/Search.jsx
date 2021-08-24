@@ -1,17 +1,22 @@
-import React from 'react';
-import {connect} from 'react-redux'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import ArrivalsList from './ArrivalsList';
 import DeparturesList from './DeparturesList';
-import * as flightAction from './flight.actions'
-import {flightSelector} from './flight.selectors'
+import * as flightAction from './flight.actions';
+import { flightSelector } from './flight.selectors';
+import { getFlightData } from './flight.actions';
 
-class Search extends React.Component {
-  onChange = (e) => {
-    this.props.onChangeFlightText(e.target.value)
-  }
+const Search = ({ flight, getFlightData }) => {
+  // onChangeFlight = (e) => {
+  //   return onChangeFlightText(e.target.value);
+  // };
 
-  render() {
-    return (
+  useEffect(() => {
+    getFlightData();
+  }, []);
+ 
+
+  return (
     <>
       <div className="search">
         <h2 className="title">SEARCH FLIGHT</h2>
@@ -19,7 +24,7 @@ class Search extends React.Component {
           <form className="search__form">
             {/* <i className="fas fa-search"></i> */}
             <input
-              onChange={this.onChange}
+              // onChange={onChangeFlight()}
               className="search__input"
               type="text"
               placeholder="Airline, destination or flight #"
@@ -31,25 +36,29 @@ class Search extends React.Component {
         </div>
       </div>
       <div className="flight__btn">
-        <button className="flight__btn-departures">DEPARTURES</button>
-        <DeparturesList flight={this.props.flight} />
+        <button
+          className="flight__btn-departures"
+        >
+          DEPARTURES
+        </button>
+        <DeparturesList flight={flight} />
         <button className="flight__btn-arrivals">ARRIVALS</button>
         <ArrivalsList />
       </div>
     </>
   );
-  }
-  
 };
 
 const mapState = (state) => {
+  console.log(state)
   return {
-    flight: flightSelector(state)
-  }
-}
+    flight: flightSelector(state),
+  };
+};
 
 const mapDispatch = {
-  onChangeFlightText: flightAction.flightDataAction,
+  getFlightData: flightAction.getFlightData,
+  // onChangeFlightText: flightAction.flightDataAction,
 };
 
 export default connect(mapState, mapDispatch)(Search);

@@ -1,1 +1,1 @@
-export const flightSelector = (state) => state.flight.flightData
+export const flightSelector = (state) => state.flight.flightData;

@@ -1,11 +1,14 @@
-const baseUrl = 'https://api.iev.aero/api/flights';
+import moment from 'moment';
 
-const data = new Date()
+const dataFlight = moment(new Date()).format('DD-MM-YYYY');
 
-export const fetchFlightData = (data) =>
-  fetch(`${baseUrl}/${data}`).then((response) => {
-    if (response.ok) {
-      return response.json();
+export const fetchFlightData = () => {
+  return fetch(`https://api.iev.aero/api/flights/${dataFlight}`).then(
+    (response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error();
     }
-    throw new Error();
-  });
+  );
+};

@@ -1,21 +1,27 @@
 import React from 'react';
+import moment from 'moment';
 
-const DeparturesList = ({ flight }) => {
-  //return <div>{console.log(flight)}</div>;
-
+const DeparturesList = ({ flightDepartures }) => {
   return (
-    <ul className="cities-list">
-      {flight.map((el) => (
-        <li className="city" key={el.ID}>
-          <span className="city__name">{el.term}</span>
-          <span className="city__name">{el.timeBoard}</span>
-          {/* <span className="city__name">{el.airportToID.city_en}</span> */}
-          <span className="city__name">{`Landed ${el.timeDepFact}`}</span>
-          <span className="city__name">{`${el.codeShareData.logo}${el.codeShareData.icao}`}</span>
-          <span className="city__name">{el.codeShareData.codeShare}</span>
-        </li>
-      ))}
-    </ul>
+    <main>
+      <ul className="">
+        {flightDepartures.map((el) => (
+          <li className="" key={el.ID}>
+            <span className="">{el.term}</span>
+            <span className="">{moment(el.timeBoard).format('hh:mm')}</span>
+            <span className="">{el['airportToID.city_en']}</span>
+            <span className="">{`Landed ${moment(el.timeDepFact).format(
+              'hh:mm'
+            )}`}</span>
+            <span className="">
+              <img src={el.airline.en.logoName} alt="Logo" />
+              {el.airline.en.name}
+            </span>
+            <span className="">{el.codeShareData[0].codeShare}</span>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
 };
 

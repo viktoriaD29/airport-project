@@ -1,20 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import ArrivalsList from './ArrivalsList';
 import DeparturesList from './DeparturesList';
 import * as flightAction from './flight.actions';
-import { flightSelector } from './flight.selectors';
-import { getFlightData } from './flight.actions';
+import {
+  flightSelectorDepartures,
+  flightSelectorArrivals,
+} from './flight.selectors';
 
-const Search = ({ flight, getFlightData }) => {
-  // onChangeFlight = (e) => {
+const Search = ({
+  flightDepartures,
+  flightArrivals,
+  getFlightData,
+  // onChangeFlightText,
+}) => {
+  const [flightInfoDep, setFlightInfoDep] = useState(false);
+  const [flightInfoArr, setFlightInfoArr] = useState(false);
+
+  const flightInfoDepartures = () => setFlightInfoDep(!flightInfoDep);
+
+  const flightInfoArrivals = () => setFlightInfoArr(!flightInfoArr);
+
+  // const onChangeFlight = (e) => {
   //   return onChangeFlightText(e.target.value);
   // };
 
   useEffect(() => {
     getFlightData();
   }, []);
- 
 
   return (
     <>
@@ -37,22 +50,30 @@ const Search = ({ flight, getFlightData }) => {
       </div>
       <div className="flight__btn">
         <button
+          onClick={() => flightInfoDepartures()}
           className="flight__btn-departures"
         >
           DEPARTURES
         </button>
-        <DeparturesList flight={flight} />
-        <button className="flight__btn-arrivals">ARRIVALS</button>
-        <ArrivalsList />
+        {flightInfoDep === true ? (
+          <DeparturesList flightDepartures={flightDepartures} />
+        ) : null}
+
+        <button onClick={() => flightInfoArrivals()} className="flight__btn-arrivals">
+          ARRIVALS
+        </button>
+        {flightInfoArr === true ? (
+          <ArrivalsList flightArrivals={flightArrivals} />
+        ) : null}
       </div>
     </>
   );
 };
 
 const mapState = (state) => {
-  console.log(state)
   return {
-    flight: flightSelector(state),
+    flightDepartures: flightSelectorDepartures(state),
+    flightArrivals: flightSelectorArrivals(state),
   };
 };
 

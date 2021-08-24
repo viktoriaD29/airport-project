@@ -1,7 +1,8 @@
 import { createStore, combineReducers } from 'redux';
+import {flightReducer} from './components/flight.reducer'
 
 const reducer = combineReducers({
- 
+  flight: flightReducer,
 });
 
 const store = createStore(

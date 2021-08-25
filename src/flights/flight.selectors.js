@@ -12,10 +12,10 @@ export const filterFlightDepatrures = createSelector(
     return flightDepartures.filter((el) => {
       console.log(el.codeShareData[0].codeShare);
       console.log(flightText);
-      // if (!el.codeShareData[0].codeShare === flightText) {
-      //   return 'No flights';
-      // }
-      // return el.codeShareData[0].codeShare === flightText;
+      if (!el.codeShareData[0].codeShare === flightText) {
+        return 'No flights';
+      }
+      return el.codeShareData[0].codeShare === flightText;
     });
   }
 );

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import ArrivalsList from './ArrivalsList';
 import DeparturesList from './DeparturesList';
 import FilterDeparturesList from './FilterDeparturesList';
-import * as flightAction from './flight.actions';
+import * as flightAction from '../flights/flight.actions';
 import {
   flightSelectorDepartures,
   flightSelectorArrivals,
   flightTextSelector,
   filterFlightDepatrures,
-} from './flight.selectors';
+} from '../flights/flight.selectors';
 
 const Search = ({
   flightDepartures,

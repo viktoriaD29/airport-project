@@ -6,24 +6,31 @@ import * as flightAction from './flight.actions';
 import {
   flightSelectorDepartures,
   flightSelectorArrivals,
+  flightTextSelector,
+  filterFlightDepatrures,
 } from './flight.selectors';
 
 const Search = ({
   flightDepartures,
   flightArrivals,
   getFlightData,
-  // onChangeFlightText,
+  filterFlightDepartures,
+  onChangeFlightText,
+  filterFlightText,
 }) => {
   const [flightInfoDep, setFlightInfoDep] = useState(false);
   const [flightInfoArr, setFlightInfoArr] = useState(false);
+  // const [filterInfoDep, setFilterFlightInfoDep] = useState(false);
 
   const flightInfoDepartures = () => setFlightInfoDep(!flightInfoDep);
 
   const flightInfoArrivals = () => setFlightInfoArr(!flightInfoArr);
 
-  // const onChangeFlight = (e) => {
-  //   return onChangeFlightText(e.target.value);
-  // };
+  // const filterFlight = () => setFilterFlightInfoDep(!filterInfoDep);
+
+  // const handelSubmit = (e) => e.preventDefault();
+  
+  // const onChangeFlight = (e) => onChangeFlightText(e.target.value);
 
   useEffect(() => {
     getFlightData();
@@ -37,12 +44,19 @@ const Search = ({
           <form className="search__form">
             {/* <i className="fas fa-search"></i> */}
             <input
-              // onChange={onChangeFlight()}
+              // onChange={(e) => onChangeFlight(e)}
+              onChange={(e) => onChangeFlightText(e.target.value)}
               className="search__input"
               type="text"
               placeholder="Airline, destination or flight #"
+              value={filterFlightText}
             />
-            <button className="search__btn" type="submit">
+            <button
+              // onClick={() => filterFlight()}
+
+              className="search__btn"
+              type="submit"
+            >
               Search
             </button>
           </form>
@@ -58,8 +72,13 @@ const Search = ({
         {flightInfoDep === true ? (
           <DeparturesList flightDepartures={flightDepartures} />
         ) : null}
-
-        <button onClick={() => flightInfoArrivals()} className="flight__btn-arrivals">
+        {/* {filterInfoDep === true ? (
+          <DeparturesList filterFlightDepartures={filterFlightDepartures} />
+        ) : null} */}
+        <button
+          onClick={() => flightInfoArrivals()}
+          className="flight__btn-arrivals"
+        >
           ARRIVALS
         </button>
         {flightInfoArr === true ? (
@@ -74,12 +93,14 @@ const mapState = (state) => {
   return {
     flightDepartures: flightSelectorDepartures(state),
     flightArrivals: flightSelectorArrivals(state),
+    filterFlightDepartures: filterFlightDepatrures(state),
+    filterFlightText: flightTextSelector(state)
   };
 };
 
 const mapDispatch = {
   getFlightData: flightAction.getFlightData,
-  // onChangeFlightText: flightAction.flightDataAction,
+  onChangeFlightText: flightAction.flightDataAction,
 };
 
 export default connect(mapState, mapDispatch)(Search);

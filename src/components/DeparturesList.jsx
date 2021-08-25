@@ -4,20 +4,30 @@ import moment from 'moment';
 const DeparturesList = ({ flightDepartures }) => {
   return (
     <main>
-      <ul className="">
+      <ul className="flights__list">
         {flightDepartures.map((el) => (
-          <li className="" key={el.ID}>
-            <span className="">{el.term}</span>
-            <span className="">{moment(el.timeBoard).format('hh:mm')}</span>
-            <span className="">{el['airportToID.city_en']}</span>
-            <span className="">{`Landed ${moment(el.timeDepFact).format(
-              'hh:mm'
-            )}`}</span>
-            <span className="">
-              <img src={el.airline.en.logoName} alt="Logo" />
+          <li className="flight" key={el.ID}>
+            <span className="flight__terminal">{el.term}</span>
+            <span className="flight__local-time">
+              {moment(el.timeBoard).format('hh:mm')}
+            </span>
+            <span className="flight__destination">
+              {el['airportToID.city_en']}
+            </span>
+            <span className="flight__status">{`Landed ${moment(
+              el.timeDepFact
+            ).format('hh:mm')}`}</span>
+            <span className="flight__airline">
+              <img
+                className="flight__airline-logo"
+                src={el.airline.en.logoName}
+                alt="Logo"
+              />
               {el.airline.en.name}
             </span>
-            <span className="">{el.codeShareData[0].codeShare}</span>
+            <span className="flight__airline-flight">
+              {el.codeShareData[0].codeShare}
+            </span>
           </li>
         ))}
       </ul>

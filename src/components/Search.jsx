@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import ArrivalsList from './ArrivalsList';
 import DeparturesList from './DeparturesList';
+import FilterDeparturesList from './FilterDeparturesList';
 import * as flightAction from './flight.actions';
 import {
   flightSelectorDepartures,
@@ -15,22 +16,22 @@ const Search = ({
   flightArrivals,
   getFlightData,
   filterFlightDepartures,
-  onChangeFlightText,
-  filterFlightText,
 }) => {
   const [flightInfoDep, setFlightInfoDep] = useState(false);
   const [flightInfoArr, setFlightInfoArr] = useState(false);
-  // const [filterInfoDep, setFilterFlightInfoDep] = useState(false);
+  const [filterDepList, setFilterDepList] = useState(false);
+  const [value, setValue] = useState('');
 
   const flightInfoDepartures = () => setFlightInfoDep(!flightInfoDep);
 
   const flightInfoArrivals = () => setFlightInfoArr(!flightInfoArr);
 
-  // const filterFlight = () => setFilterFlightInfoDep(!filterInfoDep);
+  const filterDeparturesList = () => setFilterDepList(!filterDepList);
 
-  // const handelSubmit = (e) => e.preventDefault();
-  
-  // const onChangeFlight = (e) => onChangeFlightText(e.target.value);
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    flightAction.flightDataAction(null, value);
+  };
 
   useEffect(() => {
     getFlightData();
@@ -41,19 +42,17 @@ const Search = ({
       <div className="search">
         <h2 className="title">SEARCH FLIGHT</h2>
         <div className="search__container">
-          <form className="search__form">
+          <form onSubmit={(e) => handleOnSubmit(e)} className="search__form">
             {/* <i className="fas fa-search"></i> */}
             <input
-              // onChange={(e) => onChangeFlight(e)}
-              onChange={(e) => onChangeFlightText(e.target.value)}
+              onChange={(e) => setValue(e.target.value)}
               className="search__input"
               type="text"
               placeholder="Airline, destination or flight #"
-              value={filterFlightText}
+              value={value}
             />
             <button
-              // onClick={() => filterFlight()}
-
+              onClick={() => filterDeparturesList()}
               className="search__btn"
               type="submit"
             >
@@ -72,9 +71,12 @@ const Search = ({
         {flightInfoDep === true ? (
           <DeparturesList flightDepartures={flightDepartures} />
         ) : null}
-        {/* {filterInfoDep === true ? (
-          <DeparturesList filterFlightDepartures={filterFlightDepartures} />
-        ) : null} */}
+        {filterDepList === true ? (
+          <FilterDeparturesList
+            filterFlightDepartures={filterFlightDepartures}
+          />
+        ) : null}
+
         <button
           onClick={() => flightInfoArrivals()}
           className="flight__btn-arrivals"
@@ -94,13 +96,12 @@ const mapState = (state) => {
     flightDepartures: flightSelectorDepartures(state),
     flightArrivals: flightSelectorArrivals(state),
     filterFlightDepartures: filterFlightDepatrures(state),
-    filterFlightText: flightTextSelector(state)
+    filterFlightText: flightTextSelector(state),
   };
 };
 
 const mapDispatch = {
   getFlightData: flightAction.getFlightData,
-  onChangeFlightText: flightAction.flightDataAction,
 };
 
 export default connect(mapState, mapDispatch)(Search);

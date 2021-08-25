@@ -1,11 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 
-const ArrivalsList = ({ flightArrivals }) => {
+const FilterDeparturesList = ({ filterFlightDepartures }) => {
   return (
     <main>
       <ul className="flights__list">
-        {flightArrivals.map((el) => (
+        {filterFlightDepartures.map((el) => (
           <li className="flight" key={el.ID}>
             <span className="flight__terminal">{el.term}</span>
             <span className="flight__local-time">
@@ -35,4 +35,4 @@ const ArrivalsList = ({ flightArrivals }) => {
   );
 };
 
-export default ArrivalsList;
+export default FilterDeparturesList;

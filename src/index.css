@@ -103,3 +103,66 @@ body {
   margin-right: 20px;
   background-color: transparent;
 }
+
+.flights__list {
+
+}
+
+.flight {
+  background-color: rgba(0, 102, 135, 0.1);
+  font-size: 18px;
+  line-height: 40px;
+  padding: 16px 10px;
+  border: 0;
+  list-style-type: none;
+}
+
+.flight__terminal {
+  color: #63c745;
+  font-weight: 700;
+  border: 1px solid #63c745;
+  border-radius: 50%;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 22px;
+}
+
+.flight__local-time .flight__destination {
+  font-size: 18px;
+  line-height: 40px;
+  padding: 16px 10px;
+  border: 0;
+}
+
+.flight__status {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.flight__airline {
+  height: 40px;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.flight__airline-logo {
+  max-width: 100%;
+  max-height: 95%;
+  top: 5%;
+  position: relative;
+  display: inline-block;
+  width: 70px;
+}
+
+.flight__airline-flight {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+}

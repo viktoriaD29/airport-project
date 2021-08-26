@@ -1,8 +1,8 @@
 import { FLIGHT_DATA } from './flight.actions';
+import { FLIGHT_TEXT } from './flight.actions';
 
 const initialState = {
-  flightDataDepartures: [],
-  flightDataArrivals: [],
+  flightList: [],
   flightText: '',
 };
 
@@ -11,8 +11,11 @@ export const flightReducer = (state = initialState, action) => {
     case FLIGHT_DATA:
       return {
         ...state,
-        flightDataDepartures: action.payload.flightData.departure,
-        flightDataArrivals: action.payload.flightData.arrival,
+        flightList: action.payload.flightData,
+      };
+    case FLIGHT_TEXT:
+      return {
+        ...state,
         flightText: action.payload.flightText,
       };
     default:

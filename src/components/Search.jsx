@@ -26,11 +26,11 @@ const Search = ({
 
   const flightInfoArrivals = () => setFlightInfoArr(!flightInfoArr);
 
-  const filterDeparturesList = () => setFilterDepList(!filterDepList);
+  const filterDeparturesList = () => setFilterDepList(true);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    flightAction.flightDataAction(null, value);
+    flightAction.flightTextAction(value);
   };
 
   useEffect(() => {

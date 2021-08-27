@@ -10,7 +10,7 @@ body {
   background: #e7efec;
 }
 
-.title {
+.search__title {
   margin-bottom: 30px;
   margin-left: 110px;
   font-family: 'Open Sans', sans-serif;
@@ -68,7 +68,7 @@ body {
   outline: none;
   background: #1eb7ee;
   color: #fff;
-  border-radius: 80px 80px 0 0;
+  border-radius: 80px 0 0;
   border: 0;
   cursor: pointer;
 }
@@ -90,7 +90,7 @@ body {
   outline: none;
   background: #1eb7ee;
   color: #fff;
-  border-radius: 80px 80px 0 0;
+  border-radius: 0 80px 0 0;
   border: 0;
   cursor: pointer;
 }

@@ -3,6 +3,7 @@ export const FLIGHT_TEXT = 'FLIGHT_TEXT';
 import { fetchFlightData } from './flight.gateway';
 
 export const flightDataAction = (flightData) => {
+  console.log(flightData);
   return {
     type: FLIGHT_DATA,
     payload: {
@@ -12,7 +13,6 @@ export const flightDataAction = (flightData) => {
 };
 
 export const flightTextAction = (flightText) => {
-  console.log(flightText);
   return {
     type: FLIGHT_TEXT,
     payload: {
@@ -24,7 +24,16 @@ export const flightTextAction = (flightText) => {
 export const getFlightData = () => {
   return function (dispatch) {
     fetchFlightData().then((flightData) => {
+      console.log(flightData.body);
       dispatch(flightDataAction(flightData.body));
     });
   };
 };
+
+// export const getFlightData = (direction) => {
+//   return thunkaAction = function (dispatch) {
+//     fetchFlightData(direction).then((flightData) =>
+//       dispatch(flightDataAction(flightData.body))
+//     );
+//   };
+// };

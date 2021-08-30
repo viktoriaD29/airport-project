@@ -1,20 +1,24 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './store';
 import Search from './components/Search';
+import FlightDepartures from './components/FlightDepartures';
+import FlightArrives from './components/FlightArrives';
 import FlightButton from './components/FlightButton';
 
 const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Search></Search>
-      </BrowserRouter>
-      <Route exact path="/">
         <Search />
-      </Route>
-      <Route path="/flightButton" component={FlightButton} />
+        {/* <Route exact path="/" component={Search} /> */}
+        <FlightButton />
+        <Switch>
+          <Route path="/flightDepartures" component={FlightDepartures} />
+          <Route path="/flightArrives" component={FlightArrives} />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   );
 };

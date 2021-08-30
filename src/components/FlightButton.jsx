@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
-import { Route, Link, Switch } from 'react-router-dom';
-import Flight from './Flight'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 /*
 кожна кнопка є силкою на іншу сторінку з компонентою флайт
@@ -10,39 +9,39 @@ import Flight from './Flight'
 */
 
 const FlightButton = () => {
-  const [showList, setShowList] = useState(false)
+  const [selectedDepartures, setSelectedDepartures] = useState(false);
+  const [selectedArrives, setSelectedArrives] = useState(false);
+
+  let styleDepartures =
+    selectedDepartures === true
+      ? 'flight__btn-departures-click'
+      : 'flight__btn-departures';
+
+  let styleArrives =
+    selectedArrives === true
+      ? 'flight__btn-arrivals-click'
+      : 'flight__btn-arrivals';
+
   return (
     <div className="flight__btn">
       <button
-        onClick={() => setShowList(true)}
-        className="flight__btn-departures"
+        onClick={() => setSelectedDepartures(!selectedDepartures)}
+        className={styleDepartures}
       >
-        <Link to="/flight">DEPARTURES</Link>
+        <Link className={styleDepartures} to="/flightDepartures">
+          DEPARTURES
+        </Link>
       </button>
       <button
-        onClick={() => setShowList(true)}
-        className="flight__btn-arrivals"
+        onClick={() => setSelectedArrives(!selectedArrives)}
+        className={styleArrives}
       >
-        <Link to="/flight">ARRIVALS</Link>
+        <Link className={styleArrives} to="/flightArrives">
+          ARRIVALS
+        </Link>
       </button>
-      {/* {showList === true ? <Flight /> : null} */}
     </div>
-    // <div className="flight__btn">
-    //   <button
-    //     onClick={() => setShowList(true)}
-    //     className="flight__btn-departures"
-    //   >
-    //     DEPARTURES
-    //   </button>
-    //   <button
-    //     onClick={() => setShowList(true)}
-    //     className="flight__btn-arrivals"
-    //   >
-    //     ARRIVALS
-    //   </button>
-    //   {showList === true ? <Flight /> : null}
-    // </div>
   );
-}
+};
 
-export default FlightButton
+export default FlightButton;

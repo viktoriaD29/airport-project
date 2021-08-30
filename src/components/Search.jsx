@@ -1,5 +1,6 @@
-import React from 'react'
-import FlightButton from './FlightButton'
+import React from 'react';
+import { Route, Link, Switch } from 'react-router-dom';
+import FlightButton from './FlightButton';
 
 const Search = () => {
   return (
@@ -13,18 +14,22 @@ const Search = () => {
             type="text"
             placeholder="Airline, destination or flight #"
           />
-          <button
-            className="search__btn"
-            type="submit"
-          >
+          <button className="search__btn" type="submit">
             Search
           </button>
         </form>
       </div>
-      <FlightButton/>
+      {/* <button className="flight__btn-departures">
+        <Link to="/flightDepartures">DEPARTURES</Link>
+      </button>
+      <button className="flight__btn-arrivals">
+        <Link to="/flightArrives">ARRIVALS</Link>
+      </button> */}
+
+      {/* <FlightButton /> */}
     </div>
   );
-}
+};
 
 export default Search;
 
@@ -68,55 +73,55 @@ export default Search;
 //   }, []);
 
 //   return (
-    // <>
-    //   <div className="search">
-    //     <h2 className="title">SEARCH FLIGHT</h2>
-    //     <div className="search__container">
-    //       <form onSubmit={(e) => handleOnSubmit(e)} className="search__form">
-    //         {/* <i className="fas fa-search"></i> */}
-    //         <input
-    //           onChange={(e) => setValue(e.target.value)}
-    //           className="search__input"
-    //           type="text"
-    //           placeholder="Airline, destination or flight #"
-    //           value={value}
-    //         />
-    //         <button
-    //           onClick={() => filterDeparturesList()}
-    //           className="search__btn"
-    //           type="submit"
-    //         >
-    //           Search
-    //         </button>
-      //     </form>
-      //   </div>
-      // </div>
-      // <div className="flight__btn">
-      //   <button
-      //     onClick={() => flightInfoDepartures()}
-      //     className="flight__btn-departures"
-      //   >
-      //     DEPARTURES
-      //   </button>
-      //   {flightInfoDep === true ? (
-      //     <DeparturesList flightDepartures={flightDepartures} />
-      //   ) : null}
-      //   {filterDepList === true ? (
-      //     <FilterDeparturesList
-      //       filterFlightDepartures={filterFlightDepartures}
-      //     />
-      //   ) : null}
+// <>
+//   <div className="search">
+//     <h2 className="title">SEARCH FLIGHT</h2>
+//     <div className="search__container">
+//       <form onSubmit={(e) => handleOnSubmit(e)} className="search__form">
+//         {/* <i className="fas fa-search"></i> */}
+//         <input
+//           onChange={(e) => setValue(e.target.value)}
+//           className="search__input"
+//           type="text"
+//           placeholder="Airline, destination or flight #"
+//           value={value}
+//         />
+//         <button
+//           onClick={() => filterDeparturesList()}
+//           className="search__btn"
+//           type="submit"
+//         >
+//           Search
+//         </button>
+//     </form>
+//   </div>
+// </div>
+// <div className="flight__btn">
+//   <button
+//     onClick={() => flightInfoDepartures()}
+//     className="flight__btn-departures"
+//   >
+//     DEPARTURES
+//   </button>
+//   {flightInfoDep === true ? (
+//     <DeparturesList flightDepartures={flightDepartures} />
+//   ) : null}
+//   {filterDepList === true ? (
+//     <FilterDeparturesList
+//       filterFlightDepartures={filterFlightDepartures}
+//     />
+//   ) : null}
 
-      //   <button
-      //     onClick={() => flightInfoArrivals()}
-      //     className="flight__btn-arrivals"
-      //   >
-      //     ARRIVALS
-      //   </button>
-      //   {flightInfoArr === true ? (
-      //     <ArrivalsList flightArrivals={flightArrivals} />
-      //   ) : null}
-      // </div>
+//   <button
+//     onClick={() => flightInfoArrivals()}
+//     className="flight__btn-arrivals"
+//   >
+//     ARRIVALS
+//   </button>
+//   {flightInfoArr === true ? (
+//     <ArrivalsList flightArrivals={flightArrivals} />
+//   ) : null}
+// </div>
 //     </>
 //   );
 // };

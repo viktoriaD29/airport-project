@@ -15,8 +15,8 @@ const App = () => {
         {/* <Route exact path="/" component={Search} /> */}
         <FlightButton />
         <Switch>
-          <Route path="/flightDepartures" component={FlightDepartures} />
-          <Route path="/flightArrives" component={FlightArrives} />
+          <Route path="/departures" component={FlightDepartures} />
+          <Route path="/arrives" component={FlightArrives} />
         </Switch>
       </BrowserRouter>
     </Provider>

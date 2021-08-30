@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 // export const flightSelectorDepartures = (state) => state.flight.flightData.departures;
 // export const flightSelectorArrivals = (state) => state.flight.flightData.arrival;
 
-export const flightSelectorList = (state) =>  {
+export const flightSelectorList = (state) => {
   console.log(state)
   return state.flight.flightList;
 }

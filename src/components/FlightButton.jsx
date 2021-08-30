@@ -28,7 +28,7 @@ const FlightButton = () => {
         onClick={() => setSelectedDepartures(!selectedDepartures)}
         className={styleDepartures}
       >
-        <Link className={styleDepartures} to="/flightDepartures">
+        <Link className={styleDepartures} to="/departures">
           DEPARTURES
         </Link>
       </button>
@@ -36,7 +36,7 @@ const FlightButton = () => {
         onClick={() => setSelectedArrives(!selectedArrives)}
         className={styleArrives}
       >
-        <Link className={styleArrives} to="/flightArrives">
+        <Link className={styleArrives} to="/arrives">
           ARRIVALS
         </Link>
       </button>

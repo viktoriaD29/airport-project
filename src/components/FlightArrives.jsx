@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as flightActions from '../flights/flight.actions';
-import {
-  flightSelectorArrivals,
-  flightSelectorList,
-} from '../flights/flight.selectors';
+import * as flightAction from '../flights/flight.actions';
+//import { getFlightData } from '../flights/flight.actions';
+import { flightSelectorList } from '../flights/flight.selectors';
 
 const FlightArrives = (flightDataArrives, getFlightData) => {
-  
-  useEffect(() => {
-    getFlightData;
-  }, []);
-
+  // const { direction } = useParams();
+  // useEffect(() => {
+  //   getFlightData(direction);
+  // }, [direction]);
+  console.log(getFlightData);
   console.log(flightDataArrives.flightDataArrives);
   return (
     <>
@@ -65,30 +64,6 @@ const FlightArrives = (flightDataArrives, getFlightData) => {
             <td>
               <span className="flight__airline-flight"></span>
             </td>
-            {/* <td>
-              <span className="flight__terminal"></span>
-            </td>
-            <td>
-              <span className="flight__local-time"></span>
-            </td>
-            <td>
-              <span className="flight__destination"></span>
-            </td>
-            <td>
-              <span className="flight__status"></span>
-            </td>
-            <td>
-              <span className="flight__airline">
-                <img
-                  className="flight__airline-logo"
-                  // src={el.airline.en.logoName}
-                  alt="Logo"
-                />
-              </span>
-            </td>
-            <td>
-              <span className="flight__airline-flight"></span>
-            </td> */}
           </tr>
         </tbody>
       </table>
@@ -103,7 +78,7 @@ const mapState = (state) => {
 };
 
 const mapDispatch = {
-  getFlightData: flightActions.getFlightData,
+  getFlightData: flightAction.getFlightData,
 };
 
 export default connect(mapState, mapDispatch)(FlightArrives);

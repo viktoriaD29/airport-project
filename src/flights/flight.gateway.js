@@ -10,5 +10,7 @@ export const fetchFlightData = () => {
       }
       throw new Error();
     }
-  )
+  );
 };
+
+

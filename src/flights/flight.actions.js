@@ -25,10 +25,9 @@ export const getFlightData = (direction) => {
   return function (dispatch) {
     fetchFlightData().then(
       (flightData) =>
-        // console.log(flightData.body)
-        // console.log(flightData.body[`${direction.slice(0, -1)}`])
-        
-      dispatch(flightDataAction(flightData.body[`${direction.slice(0, -1)}`]))
-    )
+        dispatch(flightDataAction(flightData.body[`${direction.slice(0, -1)}`]))
+
+      // dispatch(flightDataAction(flightData.body[direction]))
+    );
   };
 };

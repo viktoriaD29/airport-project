@@ -142,10 +142,23 @@ body {
   list-style-type: none;
 }
 
-.flight__terminal {
+.flight__terminal_green {
   color: #63c745;
-  font-weight: 700;
   border: 1px solid #63c745;
+  border-radius: 50%;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.flight__terminal_blue {
+  color: #1eb7ee;
+  border: 1px solid #1eb7ee;
+  font-weight: 700;
   border-radius: 50%;
   display: inline-block;
   width: 40px;
@@ -190,4 +203,43 @@ body {
   display: block;
   height: 40px;
   line-height: 40px;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  width: 1120px;
+}
+
+.flight__airline-logo {
+  margin-right: 10px;
+  width: 68px;
+  height: 38px;
+}
+
+.table__container {
+  background-color: #fff;
+  flex: 1;
+  border-collapse: collapse;
+  font-size: 22px;
+}
+
+.table__container__head {
+  text-align: left;
+  color: #95989a;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.table__container__head__item {
+  padding: 12px;
+}
+
+.noFlight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 30px;
+  font-weight: 700;
 }

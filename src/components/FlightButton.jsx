@@ -14,7 +14,7 @@ const FlightButton = () => {
     selectedArrives === true
       ? 'flight__btn-arrivals-click'
       : 'flight__btn-arrivals';
-  // const { pathname } = useLocation();
+
 
   // const infoDeparturesStyle =
   //   pathname === '/departures' ? 'nav-item_active' : '';

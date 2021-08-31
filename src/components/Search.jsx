@@ -3,19 +3,15 @@ import qs from 'qs';
 import { Link, useLocation } from 'react-router-dom';
 
 const Search = () => {
-  const { search } = useLocation();
-  const querySearch = qs.parse(search, { ignoreQueryPrefix: true }).search;
+  const { pathname, search } = useLocation();
+  const inputText = qs.parse(search, { ignoreQueryPrefix: true }).search;
 
-  const queryParams = querySearch ? querySearch : '';
-
-  const [value, setValue] = useState(queryParams);
+  const [value, setValue] = useState(inputText ? inputText : '');
 
   const onChange = (event) => {
     event.preventDefault();
     setValue(event.target.value);
   };
-
-  const { pathname } = useLocation();
 
   let path =
     pathname === '/departures'
@@ -46,115 +42,6 @@ const Search = () => {
 };
 
 export default Search;
-
-
-// // import React, { useState, useEffect } from 'react';
-// // import { connect } from 'react-redux';
-// // import ArrivalsList from './ArrivalsList';
-// // import DeparturesList from './DeparturesList';
-// // import FilterDeparturesList from './FilterDeparturesList';
-// // import * as flightAction from '../flights/flight.actions';
-// // import {
-// //   flightSelectorDepartures,
-// //   flightSelectorArrivals,
-// //   flightTextSelector,
-// //   filterFlightDepatrures,
-// // } from '../flights/flight.selectors';
-
-// // const Search = ({
-// //   flightDepartures,
-// //   flightArrivals,
-// //   getFlightData,
-// //   filterFlightDepartures,
-// // }) => {
-// //   const [flightInfoDep, setFlightInfoDep] = useState(false);
-// //   const [flightInfoArr, setFlightInfoArr] = useState(false);
-// //   const [filterDepList, setFilterDepList] = useState(false);
-// //   const [value, setValue] = useState('');
-
-// //   const flightInfoDepartures = () => setFlightInfoDep(!flightInfoDep);
-
-// //   const flightInfoArrivals = () => setFlightInfoArr(!flightInfoArr);
-
-// //   const filterDeparturesList = () => setFilterDepList(true);
-
-// //   const handleOnSubmit = (e) => {
-// //     e.preventDefault();
-// //     flightAction.flightTextAction(value);
-// //   };
-
-// //   useEffect(() => {
-// //     getFlightData();
-// //   }, []);
-
-// //   return (
-// // <>
-// //   <div className="search">
-// //     <h2 className="title">SEARCH FLIGHT</h2>
-// //     <div className="search__container">
-// //       <form onSubmit={(e) => handleOnSubmit(e)} className="search__form">
-// //         {/* <i className="fas fa-search"></i> */}
-// //         <input
-// //           onChange={(e) => setValue(e.target.value)}
-// //           className="search__input"
-// //           type="text"
-// //           placeholder="Airline, destination or flight #"
-// //           value={value}
-// //         />
-// //         <button
-// //           onClick={() => filterDeparturesList()}
-// //           className="search__btn"
-// //           type="submit"
-// //         >
-// //           Search
-// //         </button>
-// //     </form>
-// //   </div>
-// // </div>
-// // <div className="flight__btn">
-// //   <button
-// //     onClick={() => flightInfoDepartures()}
-// //     className="flight__btn-departures"
-// //   >
-// //     DEPARTURES
-// //   </button>
-// //   {flightInfoDep === true ? (
-// //     <DeparturesList flightDepartures={flightDepartures} />
-// //   ) : null}
-// //   {filterDepList === true ? (
-// //     <FilterDeparturesList
-// //       filterFlightDepartures={filterFlightDepartures}
-// //     />
-// //   ) : null}
-
-// //   <button
-// //     onClick={() => flightInfoArrivals()}
-// //     className="flight__btn-arrivals"
-// //   >
-// //     ARRIVALS
-// //   </button>
-// //   {flightInfoArr === true ? (
-// //     <ArrivalsList flightArrivals={flightArrivals} />
-// //   ) : null}
-// // </div>
-// //     </>
-// //   );
-// // };
-
-// // const mapState = (state) => {
-// //   return {
-// //     flightDepartures: flightSelectorDepartures(state),
-// //     flightArrivals: flightSelectorArrivals(state),
-// //     filterFlightDepartures: filterFlightDepatrures(state),
-// //     filterFlightText: flightTextSelector(state),
-// //   };
-// // };
-
-// // const mapDispatch = {
-// //   getFlightData: flightAction.getFlightData,
-// // };
-
-// // export default connect(mapState, mapDispatch)(Search);
 
 // // {
 // //   /* <span data-v-793d4c91="" className="icon-flight">

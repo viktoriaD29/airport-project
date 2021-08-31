@@ -1,99 +1,100 @@
 import React, { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import * as flightsAction from '../flights/flight.actions';
 import { connect } from 'react-redux';
-import * as flightAction from '../flights/flight.actions';
-//import { getFlightData } from '../flights/flight.actions';
 import {
-  flightSelectorList,
-  flightTextSelector,
-  filteredFlightsListSelector,
+  filterFlightListSelector,
 } from '../flights/flight.selectors';
+import { useParams, useLocation } from 'react-router-dom';
 import qs from 'qs';
+import moment from 'moment';
 
-const Flights = (flightsList, getFlightData, getFlightText) => {
+const Flights = ({ getFlightList, flightsList, getflightText }) => {
   const { direction } = useParams();
   const { search } = useLocation();
   const querySearch = qs.parse(search, { ignoreQueryPrefix: true }).search;
 
   useEffect(() => {
-    getFlightData(direction);
+    getFlightList(direction);
   }, [direction]);
 
   useEffect(() => {
-    getFlightText(querySearch);
+    getflightText(querySearch);
   }, [querySearch]);
 
+  // if (flightsList.length === 0) {
+  //   return <h2 className="no-flights">No flights</h2>;
+  // }
+
   return flightsList.length === 0 ? (
-    <h2 className="no-flights">No flights</h2>
+    <div className="noFlight">No flight</div>
   ) : (
-    <>
-      {console.log('hello')}
-      <table className="flight__table">
-        <thead>
+    <div className="table">
+      <table className="table__container">
+        <thead className="table__container__head">
           <tr>
-            <th>
-              <span>Terminal</span>
-            </th>
-            <th>
-              <span>Local time</span>
-            </th>
-            <th>
-              <span>Destination</span>
-            </th>
-            <th>
-              <span>Status</span>
-            </th>
-            <th>
-              <span>Airline</span>
-            </th>
-            <th>
-              <span>Flight</span>
-            </th>
+            <th className="table__container__head__item">Terminal</th>
+            <th className="table__container__head__item">Local time</th>
+            <th className="table__container__head__item">Destination</th>
+            <th className="table__container__head__item">Status</th>
+            <th className="table__container__head__item">Airline</th>
+            <th className="table__container__head__item">Flight</th>
+            <th className="table__container__head__item"></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <span className="flight__terminal"></span>
-            </td>
-            <td>
-              <span className="flight__local-time"></span>
-            </td>
-            <td>
-              <span className="flight__destination"></span>
-            </td>
-            <td>
-              <span className="flight__status"></span>
-            </td>
-            <td>
-              <span className="flight__airline">
-                <img
-                  className="flight__airline-logo"
-                  // src={el.airline.en.logoName}
-                  alt="Logo"
-                />
-              </span>
-            </td>
-            <td>
-              <span className="flight__airline-flight"></span>
-            </td>
-          </tr>
+          {flightsList.map((flight) => {
+            return (
+              <tr key={flight.ID}>
+                <td>
+                  <span className="flight__terminal">{flight.term}</span>
+                </td>
+                <td>
+                  <span className="flight__local-time">
+                    {moment(flight.timeBoard).format('hh:mm')}
+                  </span>
+                </td>
+                <td>
+                  <span className="flight__destination">
+                    {flight['airportToID.city_en']}
+                  </span>
+                </td>
+                <td>
+                  <span className="flight__status">{`Landed ${moment(
+                    flight.timeDepFact
+                  ).format('hh:mm')}`}</span>
+                </td>
+                <td>
+                  <span className="flight__airline">
+                    <img
+                      className="flight__airline-logo"
+                      src={flight.airline.en.logoName}
+                      alt="Logo"
+                    />
+                    {flight.airline.en.name}
+                  </span>
+                </td>
+                <td>
+                  <span className="flight__airline-flight">
+                    {flight.codeShareData[0].codeShare}
+                  </span>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
-const mapState = (state) => {
-  return {
-    flightsList: filteredFlightsListSelector(state),
-    flightText: flightTextSelector(state),
-  };
+const mapDispatch = {
+  getFlightList: flightsAction.getFlightData,
+  getflightText: flightsAction.flightTextAction,
 };
 
-const mapDispatch = {
-  getFlightData: flightAction.getFlightData,
-  getFlightText: flightAction.flightTextAction,
-};
+const mapState = (state) => ({
+  //flightText: flightTextSelector(state),
+  flightsList: filterFlightListSelector(state),
+});
 
 export default connect(mapState, mapDispatch)(Flights);

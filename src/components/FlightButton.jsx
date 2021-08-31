@@ -1,15 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {dataFlight} from '../flights/flight.gateway'
-import { useLocation } from 'react-router-dom';
-
-
-/*
-кожна кнопка є силкою на іншу сторінку з компонентою флайт
-шлях до компоненти флайт відповідє переданому масиву
-
-коли вводиш текст він зберігається з параметрах юрл і при кіку на кнопку сьорч малюється та сторінка вже з цим юрл
-*/
 
 const FlightButton = () => {
   const [selectedDepartures, setSelectedDepartures] = useState(false);
@@ -24,34 +14,40 @@ const FlightButton = () => {
     selectedArrives === true
       ? 'flight__btn-arrivals-click'
       : 'flight__btn-arrivals';
-  
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
 
-  // const { search, pathname } = useLocation();
-  // {
-  //   `/departure/${dataFlight}${search}`;
-  // }
+  // const infoDeparturesStyle =
+  //   pathname === '/departures' ? 'nav-item_active' : '';
+  // const infoArrivalsStyle = pathname === '/arrivals' ? 'nav-item_active' : '';
 
   return (
-    <div className="flight__btn">
-      <Link to="/departure">
+    <ul className="flight__btn">
+      <Link to="/departures">
         <button
           onClick={() => setSelectedDepartures(!selectedDepartures)}
           className={styleDepartures}
         >
-          DEPARTURES
+          Departures
         </button>
       </Link>
-      <Link to="/arrival">
+
+      <Link to="/arrivals">
         <button
           onClick={() => setSelectedArrives(!selectedArrives)}
           className={styleArrives}
         >
-          ARRIVALS
+          Arrivals
         </button>
       </Link>
-    </div>
+    </ul>
   );
 };
 
 export default FlightButton;
+
+// /*
+// кожна кнопка є силкою на іншу сторінку з компонентою флайт
+// шлях до компоненти флайт відповідє переданому масиву
+
+// коли вводиш текст він зберігається з параметрах юрл і при кіку на кнопку сьорч малюється та сторінка вже з цим юрл
+// */

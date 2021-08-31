@@ -3,23 +3,17 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './store';
 import Search from './components/Search';
-import FlightDepartures from './components/FlightDepartures';
-import FlightArrives from './components/FlightArrives';
-import FlightButton from './components/FlightButton';
 import Flights from './components/Flights';
+import FlightButton from './components/FlightButton';
 
 const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Search />
-        {/* <Route exact path="/" component={Search} /> */}
-        <FlightButton />
+        <Route component={Search} />
+        <Route component={FlightButton} />
         <Switch>
-          {/* <Route path="/departures" component={FlightDepartures} />
-          <Route path="/arrives" component={FlightArrives} /> */}
-          <Route path="/departures" component={Flights} />
-          <Route path="/arrives" component={Flights} />
+          <Route path="/:direction" component={Flights} />
         </Switch>
       </BrowserRouter>
     </Provider>
@@ -71,9 +65,9 @@ export default App;
 //             <span className="flight__destination">
 //               {el['airportToID.city_en']}
 //             </span>
-//             <span className="flight__status">{`Landed ${moment(
-//               el.timeDepFact
-//             ).format('hh:mm')}`}</span>
+            // <span className="flight__status">{`Landed ${moment(
+            //   el.timeDepFact
+            // ).format('hh:mm')}`}</span>
 //             <span className="flight__airline">
 //               <img
 //                 className="flight__airline-logo"

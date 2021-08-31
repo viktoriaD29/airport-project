@@ -3,7 +3,7 @@ import { FLIGHT_TEXT } from './flight.actions';
 
 const initialState = {
   flightList: [],
-  flightText: '',
+  // flightText: '',
 };
 
 export const flightReducer = (state = initialState, action) => {
@@ -13,11 +13,11 @@ export const flightReducer = (state = initialState, action) => {
         ...state,
         flightList: action.payload.flightData,
       };
-    case FLIGHT_TEXT:
-      return {
-        ...state,
-        flightText: action.payload.flightText,
-      };
+    // case FLIGHT_TEXT:
+    //   return {
+    //     ...state,
+    //     flightText: action.payload.flightText,
+    //   };
     default:
       return state;
   }

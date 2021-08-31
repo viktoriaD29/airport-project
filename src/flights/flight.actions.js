@@ -12,22 +12,31 @@ export const flightDataAction = (flightData) => {
   return action;
 };
 
-export const flightTextAction = (flightText) => {
-  return {
-    type: FLIGHT_TEXT,
-    payload: {
-      flightText,
-    },
-  };
-};
+// export const flightTextAction = (flightText) => {
+//   return {
+//     type: FLIGHT_TEXT,
+//     payload: {
+//       flightText,
+//     },
+//   };
+// };
 
-export const getFlightData = () => {
-  return function (dispatch) {
-    fetchFlightData().then((flightData) =>
-      dispatch(flightDataAction(flightData.body))
+export const getFlightData = (direction) => {
+  const thunkaAction = function (dispatch) {
+    fetchFlightData(direction).then((flightData) =>
+      dispatch(tasksListRecieved(flightData))
     );
   };
+  return thunkaAction;
 };
+
+// export const getFlightData = () => {
+//   return function (dispatch) {
+//     fetchFlightData().then((flightData) =>
+//       dispatch(flightDataAction(flightData.body))
+//     );
+//   };
+// };
 
 // export const getFlightData = (direction) => {
 //   const thunkAction = function (dispatch) {

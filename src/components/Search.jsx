@@ -1,8 +1,31 @@
-import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
-import FlightButton from './FlightButton';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import qs from 'qs';
 
-const Search = () => {
+const Search = ({match}) => {
+  console.log(match) //undefined
+  
+  // {`?search=${value}`}
+
+  // const { search } = useLocation();
+  // const querySearch = qs.parse(search, { ignoreQueryPrefix: true }).search;
+
+  // const queryParams = querySearch ? querySearch : '';
+
+  const [value, setValue] = useState('');
+
+  const onChange = (event) => {
+    event.preventDefault();
+    setValue(event.target.value);
+  };
+
+  // const { pathname } = useLocation();
+
+  // let path =
+  //   pathname === '/departures'
+  //     ? `/departures?search=${value}`
+  //     : `/arrivals?search=${value}`;
+
   return (
     <div className="search">
       <h2 className="search__title">SEARCH FLIGHT</h2>
@@ -13,20 +36,16 @@ const Search = () => {
             className="search__input"
             type="text"
             placeholder="Airline, destination or flight #"
+            onChange={onChange}
+            value={value}
           />
-          <button className="search__btn" type="submit">
-            Search
-          </button>
+          <Link to={`?search=${value}`}>
+            <button className="search__btn" type="submit">
+              Search
+            </button>
+          </Link>
         </form>
       </div>
-      {/* <button className="flight__btn-departures">
-        <Link to="/flightDepartures">DEPARTURES</Link>
-      </button>
-      <button className="flight__btn-arrivals">
-        <Link to="/flightArrives">ARRIVALS</Link>
-      </button> */}
-
-      {/* <FlightButton /> */}
     </div>
   );
 };

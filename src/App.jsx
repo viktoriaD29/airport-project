@@ -6,6 +6,7 @@ import Search from './components/Search';
 import FlightDepartures from './components/FlightDepartures';
 import FlightArrives from './components/FlightArrives';
 import FlightButton from './components/FlightButton';
+import Flights from './components/Flights';
 
 const App = () => {
   return (
@@ -15,8 +16,10 @@ const App = () => {
         {/* <Route exact path="/" component={Search} /> */}
         <FlightButton />
         <Switch>
-          <Route path="/departures" component={FlightDepartures} />
-          <Route path="/arrives" component={FlightArrives} />
+          {/* <Route path="/departures" component={FlightDepartures} />
+          <Route path="/arrives" component={FlightArrives} /> */}
+          <Route path="/departures" component={Flights} />
+          <Route path="/arrives" component={Flights} />
         </Switch>
       </BrowserRouter>
     </Provider>

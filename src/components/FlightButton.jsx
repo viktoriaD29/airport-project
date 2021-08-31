@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {dataFlight} from '../flights/flight.gateway'
+import { useLocation } from 'react-router-dom';
+
 
 /*
 кожна кнопка є силкою на іншу сторінку з компонентою флайт
@@ -21,25 +24,32 @@ const FlightButton = () => {
     selectedArrives === true
       ? 'flight__btn-arrivals-click'
       : 'flight__btn-arrivals';
+  
+  const { pathname } = useLocation();
+
+  // const { search, pathname } = useLocation();
+  // {
+  //   `/departure/${dataFlight}${search}`;
+  // }
 
   return (
     <div className="flight__btn">
-      <button
-        onClick={() => setSelectedDepartures(!selectedDepartures)}
-        className={styleDepartures}
-      >
-        <Link className={styleDepartures} to="/departures">
+      <Link to="/departure">
+        <button
+          onClick={() => setSelectedDepartures(!selectedDepartures)}
+          className={styleDepartures}
+        >
           DEPARTURES
-        </Link>
-      </button>
-      <button
-        onClick={() => setSelectedArrives(!selectedArrives)}
-        className={styleArrives}
-      >
-        <Link className={styleArrives} to="/arrives">
+        </button>
+      </Link>
+      <Link to="/arrival">
+        <button
+          onClick={() => setSelectedArrives(!selectedArrives)}
+          className={styleArrives}
+        >
           ARRIVALS
-        </Link>
-      </button>
+        </button>
+      </Link>
     </div>
   );
 };

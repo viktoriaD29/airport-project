@@ -1,0 +1,17 @@
+@import 'search';
+@import 'flights';
+@import 'flightButton';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  background: #e7efec;
+}
+
+/*# sourceMappingURL=index.scss.map */

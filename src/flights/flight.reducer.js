@@ -15,7 +15,7 @@ export const flightReducer = (state = initialState, action) => {
     case FLIGHT_TEXT:
       return {
         ...state,
-        flightNumber: action.payload.flightText,
+        flightText: action.payload.flightText,
       };
     default:
       return state;

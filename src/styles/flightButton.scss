@@ -1,0 +1,77 @@
+.flight__btn {
+  display: flex;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.flight__btn-departures {
+  width: 582px;
+  height: 60px;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  line-height: 60px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  outline: none;
+  background: #1eb7ee;
+  color: #fff;
+  border-radius: 80px 0 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.flight__btn-arrivals {
+  width: 582px;
+  height: 60px;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  line-height: 60px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  outline: none;
+  background: #1eb7ee;
+  color: #fff;
+  border-radius: 0 80px 0 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.flight__btn-departures-click {
+  width: 582px;
+  height: 60px;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  line-height: 60px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  outline: none;
+  background: #fff;
+  color: #1eb7ee;
+  border-radius: 80px 0 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.flight__btn-arrivals-click {
+  width: 582px;
+  height: 60px;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  line-height: 60px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  outline: none;
+  background: #fff;
+  color: #1eb7ee;
+  border-radius: 0 80px 0 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.flight__btn__icon {
+  margin: 10px;
+}

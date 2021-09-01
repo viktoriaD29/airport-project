@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
+import '../styles/flights.scss';
 import * as flightsAction from '../flights/flight.actions';
 import { connect } from 'react-redux';
-import { filterFlightListSelector, filterSearchListSelector } from '../flights/flight.selectors';
+import {
+  filterFlightListSelector,
+  filterSearchListSelector,
+} from '../flights/flight.selectors';
 import { useParams, useLocation } from 'react-router-dom';
 import qs from 'qs';
 import moment from 'moment';
@@ -19,23 +23,37 @@ const Flights = ({ getFlightList, flightsList, getflightText }) => {
     getflightText(inputText);
   }, [inputText]);
 
-  
   return (
     <>
       {flightsList.length === 0 ? (
-        <div className="noFlight">No flight</div>
+        <div className="noFlight-text">No flight</div>
       ) : (
         <div className="table">
           <table className="table__container">
             <thead className="table__container__head">
-              <tr>
-                <th className="table__container__head__item">Terminal</th>
-                <th className="table__container__head__item">Local time</th>
-                <th className="table__container__head__item">Destination</th>
-                <th className="table__container__head__item">Status</th>
-                <th className="table__container__head__item">Airline</th>
-                <th className="table__container__head__item">Flight</th>
-                <th className="table__container__head__item"></th>
+              <tr className="table__container__head__box">
+                <th>
+                  <span className="table__container__head__item">Terminal</span>
+                </th>
+                <th>
+                  <span className="table__container__head__item">
+                    Local time
+                  </span>
+                </th>
+                <th>
+                  <span className="table__container__head__item">
+                    Destination
+                  </span>
+                </th>
+                <th>
+                  <span className="table__container__head__item">Status</span>
+                </th>
+                <th>
+                  <span className="table__container__head__item">Airline</span>
+                </th>
+                <th>
+                  <span className="table__container__head__item">Flight</span>
+                </th>
               </tr>
             </thead>
             <tbody className="table__container__body">
@@ -45,8 +63,8 @@ const Flights = ({ getFlightList, flightsList, getflightText }) => {
                     ? 'flight__terminal_green'
                     : 'flight__terminal_blue';
                 return (
-                  <tr key={flight.ID}>
-                    <td>
+                  <tr className="table__container__body__box" key={flight.ID}>
+                    <td className="table__container__body__box__terminal">
                       <span className={styleTerminal}>{flight.term}</span>
                     </td>
                     <td>
@@ -96,9 +114,7 @@ const mapDispatch = {
 };
 
 const mapState = (state) => ({
-  //flightText: flightTextSelector(state),
   flightsList: filterFlightListSelector(state),
-  // flightsList: filterSearchListSelector(state),
 });
 
 export default connect(mapState, mapDispatch)(Flights);

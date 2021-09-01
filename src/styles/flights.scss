@@ -1,0 +1,130 @@
+.table {
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    flex: 1;
+    border-collapse: collapse;
+    font-family: "Open Sans", sans-serif;
+    background-color: #fff;
+
+    &__head {
+      font-size: 16px;
+      font-weight: 600;
+      text-align: left;
+      color: #95989a;
+
+      &__box {
+        height: 70px;
+      }
+
+      &__item {
+        padding: 12px;
+        font-family: "Open Sans", sans-serif;
+        text-align: center;
+      }
+    }
+
+    &__body__box {
+      height: 70px;
+      padding: 0;
+
+      &:nth-child(odd) {
+        background-color: rgba(0, 102, 135, 0.1);
+      }
+      &__terminal {
+        font-size: 18px;
+        line-height: 40px;
+        text-align: center;
+        border: 0;
+      }
+    }
+  }
+}
+
+.flight {
+  padding: 16px 10px;
+  font-size: 18px;
+  line-height: 40px;
+  border: 0;
+  list-style-type: none;
+  background-color: rgba(0, 102, 135, 0.1);
+
+  &__terminal_green {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 35px;
+    border: 1px solid #63c745;
+    border-radius: 50%;
+    color: #63c745;
+  }
+
+  &__terminal_blue {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 35px;
+    border: 1px solid #1eb7ee;
+    border-radius: 50%;
+    color: #1eb7ee;
+  }
+
+  &__destination {
+    padding: 16px 10px;
+    font-size: 18px;
+    line-height: 40px;
+    border: 0;
+  }
+
+  &__local-time {
+    padding: 16px 10px;
+    font-size: 18px;
+    line-height: 40px;
+    border: 0;
+  }
+
+  &__status {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    border: 0;
+  }
+
+  &__airline {
+    margin-right: 5px;
+    height: 40px;
+    text-align: center;
+  }
+
+  &__airline-logo {
+    display: inline-block;
+    margin-right: 10px;
+    width: 70px;
+    height: 38px;
+  }
+
+  &__airline-flight {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+  }
+}
+
+.noFlight-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 30px;
+  font-weight: 700;
+  font-family: "Open Sans", sans-serif;
+}

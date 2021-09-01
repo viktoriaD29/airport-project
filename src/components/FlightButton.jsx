@@ -1,53 +1,36 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import '../styles/flightButton.scss';
+import { Link, useLocation } from 'react-router-dom';
 
 const FlightButton = () => {
-  const [selectedDepartures, setSelectedDepartures] = useState(false);
-  const [selectedArrives, setSelectedArrives] = useState(false);
+  const { pathname } = useLocation();
 
-  let styleDepartures =
-    selectedDepartures === true
+  const styleBtnDepartures =
+    pathname === '/departures'
       ? 'flight__btn-departures-click'
       : 'flight__btn-departures';
 
-  let styleArrives =
-    selectedArrives === true
+  const styleBtnArrivals =
+    pathname === '/arrivals'
       ? 'flight__btn-arrivals-click'
       : 'flight__btn-arrivals';
 
-
-  // const infoDeparturesStyle =
-  //   pathname === '/departures' ? 'nav-item_active' : '';
-  // const infoArrivalsStyle = pathname === '/arrivals' ? 'nav-item_active' : '';
-
   return (
-    <ul className="flight__btn">
+    <div className="flight__btn">
       <Link to="/departures">
-        <button
-          onClick={() => setSelectedDepartures(!selectedDepartures)}
-          className={styleDepartures}
-        >
-          Departures
+        <button className={styleBtnDepartures}>
+          <i className="fas fa-plane-departure flight__btn__icon"></i>Departures
         </button>
       </Link>
 
       <Link to="/arrivals">
-        <button
-          onClick={() => setSelectedArrives(!selectedArrives)}
-          className={styleArrives}
-        >
-          Arrivals
+        <button className={styleBtnArrivals}>
+          <i className="fas fa-plane-arrival flight__btn__icon"></i>Arrivals
         </button>
       </Link>
-    </ul>
+    </div>
   );
 };
 
 export default FlightButton;
 
-// /*
-// кожна кнопка є силкою на іншу сторінку з компонентою флайт
-// шлях до компоненти флайт відповідє переданому масиву
-
-// коли вводиш текст він зберігається з параметрах юрл і при кіку на кнопку сьорч малюється та сторінка вже з цим юрл
-// */

@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
 import '../styles/search.scss';
-import qs from 'qs';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Search = () => {
-  const { pathname, search } = useLocation();
-  const inputText = qs.parse(search, { ignoreQueryPrefix: true }).search;
-
-  const [value, setValue] = useState(inputText ? inputText : '');
+  const [value, setValue] = useState('');
 
   const onChange = (event) => {
     event.preventDefault();
     setValue(event.target.value);
   };
 
-  let path =
-    pathname === '/departures'
-      ? `/departures?search=${value}`
-      : `/arrivals?search=${value}`;
   return (
     <>
       <h2 className="search__title">SEARCH FLIGHT</h2>
@@ -31,7 +23,7 @@ const Search = () => {
             value={value}
             onChange={onChange}
           />
-          <Link to={path}>
+          <Link to={`?search=${value}`}>
             <button className="search__btn" type="submit">
               Search
             </button>

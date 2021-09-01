@@ -24,13 +24,9 @@ export const flightTextAction = (flightText) => {
 export const getFlightData = (direction) => {
   return function (dispatch) {
     fetchFlightData().then(
-      (flightData) =>
-        dispatch(flightDataAction(flightData.body[`${direction.slice(0, -1)}`]))
-        // dispatch(flightDataAction(flightData.body[direction]))
-
-      // console.log(flightData.body[direction])
+      (flightData) => 
+      dispatch(flightDataAction(flightData.body[`${direction.slice(0, -1)}`]))
       // console.log(flightData.body[`${direction.slice(0, -1)}`])
-      // console.log(flightData.body)
     );
   };
 };

@@ -4,7 +4,6 @@ import * as flightsAction from '../flights/flight.actions';
 import { connect } from 'react-redux';
 import {
   filterFlightListSelector,
-  filterSearchListSelector,
 } from '../flights/flight.selectors';
 import { useParams, useLocation } from 'react-router-dom';
 import qs from 'qs';

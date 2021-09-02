@@ -71,8 +71,8 @@ const Flights = ({ getFlightList, flightsList, getflightText }) => {
                     </td>
                     <td>
                       <span className="flight__destination">
-                        {flight['airportToID.city_en'] ||
-                          flight['airportFromID.city_en']}
+                        {flight['airportToID.city_en']}
+                        {flight['airportFromID.city_en']}
                       </span>
                     </td>
                     <td>
@@ -84,7 +84,7 @@ const Flights = ({ getFlightList, flightsList, getflightText }) => {
                       <span className="flight__airline">
                         <img
                           className="flight__airline-logo"
-                          src={flight.airline.en.logoName}
+                          src={flight.airline.en.logoSmallName}
                           alt="Logo"
                         />
                         {flight.airline.en.name}

@@ -23,8 +23,8 @@ export const flightTextAction = (flightText) => {
 
 export const getFlightData = (direction) => {
   return function (dispatch) {
-    fetchFlightData().then((flightsList) =>
-      dispatch(flightDataAction(flightsList.body[direction.slice(0, -1)]))
+    fetchFlightData().then((flightData) =>
+      dispatch(flightDataAction(flightData.body[direction.slice(0, -1)]))
     );
   };
 };

@@ -1,7 +1,7 @@
 # Airport-project
 
 Link:
-https://suspicious-nobel-103a0d.netlify.app
+https://viktoriad29.github.io/airport-project/
 
 <h2>The tech stack is:</h3>
 

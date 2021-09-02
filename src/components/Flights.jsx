@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import '../styles/flights.scss';
 import * as flightsAction from '../flights/flight.actions';
 import { connect } from 'react-redux';
-import {
-  filterFlightListSelector,
-} from '../flights/flight.selectors';
+import { filterFlightListSelector } from '../flights/flight.selectors';
 import { useParams, useLocation } from 'react-router-dom';
 import qs from 'qs';
 import moment from 'moment';
@@ -73,7 +71,8 @@ const Flights = ({ getFlightList, flightsList, getflightText }) => {
                     </td>
                     <td>
                       <span className="flight__destination">
-                        {flight['airportToID.city_en']}
+                        {flight['airportToID.city_en'] ||
+                          flight['airportFromID.city_en']}
                       </span>
                     </td>
                     <td>

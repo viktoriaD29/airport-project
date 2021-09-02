@@ -13,14 +13,3 @@ export const filterFlightListSelector = createSelector(
       : flightsList;
   }
 );
-
-// export const filterFlightListSelector = createSelector(
-//   [flightsListSelector, flightTextSelector],
-//   (flightsList, flightText) => {
-//     return flightText
-//       ? flightsList.filter((flight) =>
-//           `${flight['carrierID.IATA']}${flight.fltNo}`.includes(flightText)
-//         )
-//       : flightsList;
-//   }
-// );

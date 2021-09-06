@@ -9,16 +9,15 @@ import moment from 'moment';
 
 const Flights = ({ getFlightList, flightsList, getflightText }) => {
   const { direction } = useParams();
-  const { search } = useLocation();
-  const inputText = qs.parse(search, { ignoreQueryPrefix: true }).search;
+  const inputText = qs.parse(useLocation().search, { ignoreQueryPrefix: true });
 
   useEffect(() => {
     getFlightList(direction);
   }, [direction]);
 
   useEffect(() => {
-    getflightText(inputText);
-  }, [inputText]);
+    getflightText(inputText.search);
+  }, [inputText.search]);
 
   return (
     <>

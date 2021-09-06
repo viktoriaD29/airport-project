@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import '../styles/search.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Search = () => {
+  const { pathname } = useLocation();
   const [value, setValue] = useState('');
 
   const onChange = (event) => {
@@ -23,7 +24,13 @@ const Search = () => {
             value={value}
             onChange={onChange}
           />
-          <Link to={`?search=${value}`}>
+          <Link
+            to={
+              pathname === '/departures'
+                ? `/departures?search=${value}`
+                : `${pathname}?search=${value}`
+            }
+          >
             <button className="search__btn" type="submit">
               Search
             </button>
@@ -35,4 +42,3 @@ const Search = () => {
 };
 
 export default Search;
-

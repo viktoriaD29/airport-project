@@ -1,7 +1,7 @@
 # Airport-project
 
 Link:
-https://viktoriad29.github.io/airport-project/
+https://quirky-albattani-a19b05.netlify.app
 
 <h2>The tech stack is:</h3>
 

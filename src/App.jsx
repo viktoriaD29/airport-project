@@ -13,7 +13,8 @@ const App = () => {
         <Route component={Search} />
         <Route component={FlightButton} />
         <Switch>
-          <Route path="/:direction" component={Flights} />
+          <Route path="/departures" component={Flights} />
+          <Route path="/arrivals" component={Flights} />
         </Switch>
       </BrowserRouter>
     </Provider>

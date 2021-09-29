@@ -3,7 +3,7 @@ import '../styles/flightButton.scss';
 import { Link, useLocation } from 'react-router-dom';
 
 const FlightButton = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
 
   const styleBtnDepartures =
     pathname === '/departures'
@@ -17,13 +17,13 @@ const FlightButton = () => {
 
   return (
     <div className="flight__btn">
-      <Link to="/departures">
+      <Link to={`/departures${search}`}>
         <button className={styleBtnDepartures}>
           <i className="fas fa-plane-departure flight__btn__icon"></i>Departures
         </button>
       </Link>
 
-      <Link to="/arrivals">
+      <Link to={`/arrivals${search}`}>
         <button className={styleBtnArrivals}>
           <i className="fas fa-plane-arrival flight__btn__icon"></i>Arrivals
         </button>
@@ -33,4 +33,3 @@ const FlightButton = () => {
 };
 
 export default FlightButton;
-

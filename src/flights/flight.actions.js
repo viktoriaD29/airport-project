@@ -23,9 +23,14 @@ export const flightTextAction = (flightText) => {
 
 export const getFlightData = (direction) => {
   return function (dispatch) {
-    fetchFlightData().then((flightData) =>
-      dispatch(flightDataAction(flightData.body[direction.slice(0, -1)]))
-    );
+    const data = (direction = !direction ? 'departure' : direction);
+      fetchFlightData().then((flightData) =>
+        dispatch(
+          flightDataAction(
+            flightData.body[data]
+          )
+        )
+      );
   };
 };
 
